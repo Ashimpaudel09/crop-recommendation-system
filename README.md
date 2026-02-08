@@ -1,0 +1,2 @@
+# crop-recommendation-system
+Machine learning–based system using a Random Forest classifier to recommend suitable crops based on soil nutrients (NPK) and environmental factors. Features are normalized using MinMaxScaler to improve model performance and prediction reliability
