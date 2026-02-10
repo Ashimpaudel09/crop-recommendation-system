@@ -1,21 +1,30 @@
+import express from 'express';
+import cookieParser from 'cookie-parser';
 
-import express from 'express'
-import {connectionDb} from './config/dbconfig.js'
+import { connectionDb } from './config/dbconfig.js';
+import userRouter from './routes/user.routes.js';
+
 const app = express();
-const router = require("./routes/user.routes.js");
-const PORT = 3000;
-const cookieParser = require('cookie-parser');
+const PORT =  3000;
 
+// Middleware
 app.use(express.json());
-app.use('/api/user',router);
-// app.use(cookieParser);
+app.use(cookieParser());
 
-    try{
-        await connectionDb();
-        app.listen(PORT, ()=>{
-            console.log(`Server is running on port ${PORT}`);
-        });
-    }catch(error){
-        console.log("Server Error",error.message);
-    }
+// Routes
+app.use('/api/user', userRouter);
 
+// App bootstrap
+const startServer = async () => {
+  try {
+    await connectionDb();
+    app.listen(PORT, () => {
+      console.log(`✅ Server running on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error('❌ Server startup failed:', error.message);
+    process.exit(1);
+  }
+};
+
+startServer();
