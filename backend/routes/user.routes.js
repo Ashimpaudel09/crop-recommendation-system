@@ -8,7 +8,8 @@ import {
 import {
   signupUser,
   getUser,
-  loginUser
+  loginUser,
+  logoutUser
 } from '../controllers/user.controllers.js';
 
 import { signupSchema, loginSchema } from '../validation/user.validation.js';
@@ -18,5 +19,6 @@ const router = express.Router();
 router.post('/signup', validationMiddleware(signupSchema), signupUser);
 router.post('/login', validationMiddleware(loginSchema), loginUser);
 router.get('/', authenticate, getUser);
+router.post('/logout', logoutUser);
 
 export default router;

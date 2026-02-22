@@ -9,7 +9,6 @@ export const validationMiddleware = (schema) => (req, res, next) => {
       errors: error.details.map(err => err.message),
     });
   }
-
   next();
 };
 
