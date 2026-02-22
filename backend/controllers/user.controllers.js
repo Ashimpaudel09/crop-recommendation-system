@@ -33,7 +33,7 @@ export const signupUser = async (req, res) => {
 // GET USERS
 export const getUser = async (req, res) => {
   try {
-    const users = await User.find().select('-password');
+    const users = await User.findById(req.user.id).select('-password');
     res.status(200).json(users);
   } catch (error) {
     res.status(500).json({ message: error.message });
@@ -45,7 +45,7 @@ export const loginUser = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const user = await User.findOne({ email });
+    const user = await User.findOne({ email }).select('+password');
     if (!user) {
       return res.status(400).json({ message: 'User not found' });
     }

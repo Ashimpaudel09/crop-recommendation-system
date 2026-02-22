@@ -42,7 +42,7 @@ const incomeValidationSchema = Joi.object({
       'number.min': 'Quantity sold cannot be negative'
     }),
 
-  uintPrice: Joi.number()
+  unitPrice: Joi.number()
     .positive()
     .precision(2)
     .optional()
