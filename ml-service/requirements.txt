@@ -1,0 +1,10 @@
+numpy
+pandas
+matplotlib
+seaborn
+jupyter
+notebook
+fastapi
+uvicorn
+python-multipart
+pickle-mixin

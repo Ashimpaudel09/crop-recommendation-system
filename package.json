@@ -1,0 +1,11 @@
+{
+  "name": "crop-recommendation-system",
+  "version": "1.0.0",
+  "description": "Global runner for the Crop Recommendation System",
+  "scripts": {
+    "start": "npx concurrently \"npm run start:backend\" \"npm run start:frontend\" \"npm run start:ml\"",
+    "start:backend": "cd backend && npm run dev",
+    "start:frontend": "cd frontend && npm run dev",
+    "start:ml": "cd ml-service && python -m uvicorn src.app:app --port 8000 --reload"
+  }
+}
