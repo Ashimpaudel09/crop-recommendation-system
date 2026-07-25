@@ -1,0 +1,226 @@
+@import "tailwindcss";
+
+@theme {
+  --color-surface: #FAFAF8;
+  --color-surface-card: #FFFFFF;
+  --color-surface-raised: #F5F5F0;
+  --color-surface-overlay: rgba(26, 24, 20, 0.4);
+
+  --color-border: #E8E5DE;
+  --color-border-strong: #D4D0C8;
+  --color-border-focus: #8B7E6A;
+
+  --color-text-primary: #1A1814;
+  --color-text-secondary: #6B6560;
+  --color-text-muted: #9C9590;
+  --color-text-inverse: #FFFFFF;
+
+  --color-accent: #4A7C59;
+  --color-accent-hover: #3D6A4B;
+  --color-accent-light: #EDF3EF;
+  --color-accent-text: #3A6347;
+
+  --color-danger: #B8453A;
+  --color-danger-hover: #A03B31;
+  --color-danger-light: #FDF0EE;
+  --color-danger-text: #9C3A30;
+
+  --color-success: #4A7C59;
+  --color-success-light: #EDF3EF;
+
+  --color-warning: #C4862B;
+  --color-warning-light: #FEF6E8;
+  --color-warning-text: #8C6020;
+
+  --color-info: #4B7399;
+  --color-info-light: #EBF2F8;
+  --color-info-text: #3A5B7A;
+
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+}
+
+@layer base {
+  :root {
+    --surface: #FAFAF8;
+    --surface-card: #FFFFFF;
+    --surface-raised: #F5F5F0;
+    --surface-overlay: rgba(26, 24, 20, 0.4);
+
+    --border: #E8E5DE;
+    --border-strong: #D4D0C8;
+    --border-focus: #8B7E6A;
+
+    --text-primary: #1A1814;
+    --text-secondary: #6B6560;
+    --text-muted: #9C9590;
+    --text-inverse: #FFFFFF;
+
+    --accent: #4A7C59;
+    --accent-hover: #3D6A4B;
+    --accent-light: #EDF3EF;
+    --accent-text: #3A6347;
+
+    --danger: #B8453A;
+    --danger-hover: #A03B31;
+    --danger-light: #FDF0EE;
+    --danger-text: #9C3A30;
+
+    --success: #4A7C59;
+    --success-light: #EDF3EF;
+
+    --warning: #C4862B;
+    --warning-light: #FEF6E8;
+    --warning-text: #8C6020;
+
+    --info: #4B7399;
+    --info-light: #EBF2F8;
+    --info-text: #3A5B7A;
+
+    --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.04);
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
+
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+
+    --transition-fast: 150ms ease;
+    --transition-base: 200ms ease;
+    --transition-slow: 300ms ease;
+  }
+
+  body {
+    @apply bg-surface text-text-secondary antialiased;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-text-primary font-semibold leading-tight;
+  }
+
+  h1 { @apply text-2xl tracking-tight; }
+  h2 { @apply text-xl tracking-tight; }
+  h3 { @apply text-lg; }
+  
+  a {
+    @apply text-accent transition-colors duration-200 no-underline hover:text-accent-hover;
+  }
+}
+
+@layer components {
+  /* ── Form Elements ── */
+  .input-field {
+    @apply w-full bg-surface-card border border-border rounded-md px-3 py-2 text-sm text-text-primary transition-all duration-150 outline-none;
+  }
+  .input-field:focus {
+    @apply border-border-focus;
+    box-shadow: 0 0 0 3px rgba(139, 126, 106, 0.1);
+  }
+  .input-field::placeholder {
+    @apply text-text-muted;
+  }
+  .label {
+    @apply block text-[13px] font-medium text-text-secondary mb-1.5;
+  }
+
+  /* ── Buttons ── */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 text-[13px] font-medium leading-none px-4 py-2.5 rounded-md transition-all duration-150 border cursor-pointer whitespace-nowrap;
+  }
+  .btn:disabled {
+    @apply opacity-55 cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply bg-accent text-text-inverse border-accent hover:bg-accent-hover hover:border-accent-hover;
+  }
+
+  .btn-secondary {
+    @apply bg-surface-card text-text-secondary border-border hover:bg-surface-raised hover:border-border-strong hover:text-text-primary;
+  }
+
+  .btn-danger {
+    @apply bg-danger-light text-danger border-transparent hover:bg-danger hover:text-text-inverse;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent text-text-secondary border-none px-2 py-1.5 hover:bg-surface-raised hover:text-text-primary;
+  }
+
+  .btn-lg {
+    @apply px-5 py-3 text-sm;
+  }
+
+  /* ── Card ── */
+  .card {
+    @apply bg-surface-card border border-border rounded-lg shadow-[var(--shadow-xs)];
+  }
+  .card-body {
+    @apply p-5;
+  }
+
+  /* ── Badges ── */
+  .badge {
+    @apply inline-flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full leading-relaxed;
+  }
+  .badge-success {
+    @apply bg-success-light text-accent-text;
+  }
+  .badge-warning {
+    @apply bg-warning-light text-warning-text;
+  }
+  .badge-danger {
+    @apply bg-danger-light text-danger-text;
+  }
+  .badge-info {
+    @apply bg-info-light text-info-text;
+  }
+
+  /* ── Data Tables ── */
+  .table-container {
+    @apply overflow-x-auto rounded-lg border border-border bg-surface-card shadow-[var(--shadow-xs)];
+  }
+  .data-table {
+    @apply w-full border-collapse text-sm;
+  }
+  .data-table thead {
+    @apply bg-surface-raised;
+  }
+  .data-table th {
+    @apply px-4 py-3 text-left text-[11px] font-semibold text-text-muted uppercase tracking-wider border-b border-border;
+  }
+  .data-table td {
+    @apply px-4 py-3 border-b border-border text-text-secondary;
+  }
+  .data-table tbody tr:last-child td {
+    @apply border-b-0;
+  }
+  .data-table tbody tr {
+    @apply transition-colors duration-150 hover:bg-surface-raised;
+  }
+
+  /* ── Typography & Layout ── */
+  .page-header {
+    @apply flex items-center justify-between gap-4 mb-6;
+  }
+  .page-title {
+    @apply text-2xl font-semibold text-text-primary tracking-tight;
+  }
+  .page-subtitle {
+    @apply text-sm text-text-muted mt-1;
+  }
+
+  /* ── Animations & Spinners ── */
+  .spinner {
+    @apply inline-block w-4 h-4 rounded-full border-2 border-current border-r-transparent animate-spin;
+  }
+  .spinner-lg {
+    @apply w-6 h-6 border-[3px];
+  }
+}
